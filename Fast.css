@@ -1,0 +1,128 @@
+/* ================================================================
+   Fast.css — Fast Character Pixel Art & Animations (CSS Only)
+   ================================================================ */
+
+/* ─── Base Sprite Structure ─── */
+.sprite-fast {
+  width: 64px;
+  height: 96px;
+  position: relative;
+  /* Basic shape block, CSS art */
+  background: transparent;
+  image-rendering: pixelated;
+}
+
+/* Head */
+.sprite-fast::before {
+  content: '';
+  position: absolute;
+  top: 10px; left: 16px;
+  width: 32px; height: 32px;
+  background: #fcd5ce; /* Skin color */
+  border: 2px solid #333;
+  box-shadow:
+    inset -4px -4px 0 rgba(0,0,0,0.1), /* shading */
+    0 -8px 0 4px #2b2b2b, /* Hair Top */
+    -4px -4px 0 2px #2b2b2b, /* Hair Side L */
+    4px -4px 0 2px #2b2b2b; /* Hair Side R */
+  z-index: 2;
+}
+
+/* Body (Jacket & Shirt) */
+.sprite-fast::after {
+  content: '';
+  position: absolute;
+  top: 44px; left: 14px;
+  width: 36px; height: 32px;
+  background: #fff; /* Shirt */
+  border: 2px solid #333;
+  box-shadow:
+    inset 4px 0 0 #1a4a76, /* Left Jacket */
+    inset -4px 0 0 #1a4a76, /* Right Jacket */
+    0 16px 0 -4px #1c2331, /* Pants */
+    -8px 8px 0 -8px #1a4a76, /* L Arm */
+    8px 8px 0 -8px #1a4a76; /* R Arm */
+  z-index: 1;
+}
+
+/* Face Details (Eyes & Smile) */
+.fast-face {
+  position: absolute;
+  top: 24px; left: 24px;
+  width: 4px; height: 4px;
+  background: #333;
+  box-shadow:
+    12px 0 0 #333, /* Right Eye */
+    6px 6px 0 1px #ff6b9d; /* Blush/Smile */
+  z-index: 3;
+}
+
+/* ─── Animations ─── */
+.anim-fast-idle {
+  animation: fast-idle 2s steps(4) infinite;
+}
+
+@keyframes fast-idle {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-2px); }
+}
+
+.anim-fast-walk {
+  animation: fast-walk 0.6s steps(4) infinite;
+}
+
+@keyframes fast-walk {
+  0% { transform: translateY(0) rotate(0deg); }
+  25% { transform: translateY(-2px) rotate(2deg); }
+  50% { transform: translateY(0) rotate(0deg); }
+  75% { transform: translateY(-2px) rotate(-2deg); }
+  100% { transform: translateY(0) rotate(0deg); }
+}
+
+.anim-fast-happy {
+  animation: fast-jump 0.5s ease-in-out infinite alternate;
+}
+
+@keyframes fast-jump {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(-10px); }
+}
+
+/* Character Specific Portraits for Dialogue */
+.portrait-fast {
+  width: 80px; height: 80px;
+  background: linear-gradient(135deg, #1a4a76, #2b2b2b);
+  border: 3px solid var(--pink);
+  border-radius: 8px;
+  position: relative;
+  overflow: hidden;
+}
+/* Simplified inner portrait */
+.portrait-fast::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 20px;
+  width: 40px; height: 50px;
+  background: #fcd5ce;
+  border-radius: 20px 20px 0 0;
+  box-shadow: 0 -10px 0 #2b2b2b;
+}
+
+/* About/Intro Screen overrides */
+.fast-about {
+  transform: scale(1.5);
+  transform-origin: bottom center;
+}
+.char-fast-intro {
+  /* Using the structure from sprite-fast */
+  width: 64px; height: 96px;
+  position: relative;
+  transform: scale(2);
+  transform-origin: bottom right;
+}
+.char-fast-intro::before {
+  content: ''; position: absolute; top: 10px; left: 16px; width: 32px; height: 32px; background: #fcd5ce; border: 2px solid #333; box-shadow: inset -4px -4px 0 rgba(0,0,0,0.1), 0 -8px 0 4px #2b2b2b, -4px -4px 0 2px #2b2b2b, 4px -4px 0 2px #2b2b2b; z-index: 2;
+}
+.char-fast-intro::after {
+  content: ''; position: absolute; top: 44px; left: 14px; width: 36px; height: 32px; background: #fff; border: 2px solid #333; box-shadow: inset 4px 0 0 #1a4a76, inset -4px 0 0 #1a4a76, 0 16px 0 -4px #1c2331, -8px 8px 0 -8px #1a4a76, 8px 8px 0 -8px #1a4a76; z-index: 1;
+}

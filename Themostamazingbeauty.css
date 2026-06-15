@@ -1,0 +1,129 @@
+/* ================================================================
+   Themostamazingbeauty.css — Special Effects & Magic
+   ================================================================ */
+
+/* ─── Heart Particle Effects ─── */
+.effect-heart-float {
+  position: absolute;
+  pointer-events: none;
+  font-size: 16px;
+  color: var(--pink);
+  text-shadow: 0 0 10px var(--pink);
+  animation: heart-float-up 2s ease-out forwards;
+}
+
+@keyframes heart-float-up {
+  0% {
+    transform: translateY(0) scale(1) rotate(0deg);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-100px) scale(1.5) rotate(20deg);
+    opacity: 0;
+  }
+}
+
+/* ─── Pixel Explosion Effect ─── */
+.pixel-particle {
+  position: absolute;
+  width: 4px; height: 4px;
+  background: var(--color, #fff);
+  pointer-events: none;
+  animation: explode 0.8s cubic-bezier(0.1, 0.8, 0.3, 1) forwards;
+}
+
+@keyframes explode {
+  0% { transform: translate(0, 0) scale(1); opacity: 1; }
+  100% {
+    transform: translate(var(--dx), var(--dy)) scale(0);
+    opacity: 0;
+  }
+}
+
+/* ─── Screen Flash ─── */
+.screen-flash {
+  position: fixed; inset: 0;
+  background: white;
+  z-index: 9999;
+  pointer-events: none;
+  animation: flash-fade 1s ease-out forwards;
+}
+
+@keyframes flash-fade {
+  0% { opacity: 1; }
+  100% { opacity: 0; }
+}
+
+/* ─── Love Aura ─── */
+.love-aura {
+  position: relative;
+}
+.love-aura::after {
+  content: '';
+  position: absolute;
+  inset: -10px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255,107,157,0.4) 0%, transparent 70%);
+  z-index: -1;
+  animation: pulse 2s ease-in-out infinite;
+}
+
+/* ─── Glowing Text Trails ─── */
+.text-trail {
+  position: relative;
+  display: inline-block;
+}
+.text-trail::before, .text-trail::after {
+  content: attr(data-text);
+  position: absolute; top: 0; left: 0;
+  opacity: 0.5;
+  pointer-events: none;
+}
+.text-trail::before {
+  color: var(--pink);
+  animation: text-glitch-1 2s linear infinite;
+}
+.text-trail::after {
+  color: var(--purple-light);
+  animation: text-glitch-2 3s linear infinite;
+}
+
+@keyframes text-glitch-1 {
+  0%,100% { transform: translate(0,0); opacity:0.5; }
+  25% { transform: translate(2px, -1px); opacity:0.7; }
+  50% { transform: translate(-1px, 2px); opacity:0.3; }
+  75% { transform: translate(-2px, -2px); opacity:0.6; }
+}
+@keyframes text-glitch-2 {
+  0%,100% { transform: translate(0,0); opacity:0.5; }
+  33% { transform: translate(-2px, 1px); opacity:0.6; }
+  66% { transform: translate(2px, -2px); opacity:0.4; }
+}
+
+/* ─── Screen Shake ─── */
+.shake {
+  animation: shake 0.5s cubic-bezier(.36,.07,.19,.97) both;
+}
+
+@keyframes shake {
+  10%, 90% { transform: translate3d(-1px, 0, 0); }
+  20%, 80% { transform: translate3d(2px, 0, 0); }
+  30%, 50%, 70% { transform: translate3d(-4px, 0, 0); }
+  40%, 60% { transform: translate3d(4px, 0, 0); }
+}
+
+/* ─── Magic Sparkles ─── */
+.magic-sparkle {
+  position: absolute;
+  width: 2px; height: 2px;
+  background: #fff;
+  border-radius: 50%;
+  box-shadow: 0 0 4px 1px var(--gold);
+  animation: sparkle-anim 1s linear forwards;
+}
+
+@keyframes sparkle-anim {
+  0% { transform: scale(0) rotate(0deg); opacity: 0; }
+  50% { transform: scale(1.5) rotate(180deg); opacity: 1; }
+  100% { transform: scale(0) rotate(360deg); opacity: 0; }
+}

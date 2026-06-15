@@ -1,0 +1,492 @@
+/* ================================================================
+   story.css - Final game polish for Fast & Muay
+   ================================================================ */
+
+:root {
+  --mint: #7be0ad;
+  --cyan: #87ceeb;
+  --ink: #10081f;
+}
+
+button,
+.game-title,
+.game-subtitle,
+.section-title,
+.pixel-text,
+.pixel-text-xs {
+  letter-spacing: 0;
+}
+
+.btn-pixel,
+.choice-btn,
+.btn-icon {
+  border-radius: 4px;
+  line-height: 1.35;
+  white-space: normal;
+}
+
+.btn-pixel {
+  font-family: var(--thai-font);
+  font-size: 14px;
+  font-weight: 700;
+  min-height: 44px;
+}
+
+.btn-pixel:focus-visible,
+.choice-btn:focus-visible,
+.btn-icon:focus-visible,
+.puzzle-card:focus-visible,
+.gallery-item:focus-visible,
+.word-chip:focus-visible {
+  outline: 3px solid var(--gold);
+  outline-offset: 3px;
+}
+
+.game-title,
+.section-title,
+.minigame-name,
+.about-char-name,
+.ending-title {
+  font-family: var(--pixel-font);
+}
+
+.game-subtitle {
+  color: var(--mint);
+  text-shadow: 0 0 10px rgba(123, 224, 173, 0.55);
+}
+
+.intro-bg {
+  background:
+    radial-gradient(ellipse at 50% 0%, rgba(255, 107, 157, 0.28) 0%, transparent 58%),
+    radial-gradient(ellipse at 18% 82%, rgba(123, 224, 173, 0.2) 0%, transparent 42%),
+    radial-gradient(ellipse at 85% 78%, rgba(255, 209, 102, 0.18) 0%, transparent 44%),
+    linear-gradient(180deg, #08061f 0%, #24153f 42%, #112a35 100%);
+}
+
+.intro-characters {
+  min-height: 210px;
+}
+
+.char-fast-intro,
+.char-muay-intro,
+.fast-about,
+.muay-about {
+  filter: drop-shadow(0 12px 0 rgba(0, 0, 0, 0.25));
+}
+
+.fast-about,
+.muay-about {
+  width: 64px;
+  height: 96px;
+  position: relative;
+  image-rendering: pixelated;
+}
+
+.fast-about::before {
+  content: "";
+  position: absolute;
+  top: 10px;
+  left: 16px;
+  width: 32px;
+  height: 32px;
+  background: #fcd5ce;
+  border: 2px solid #333;
+  box-shadow:
+    inset -4px -4px 0 rgba(0, 0, 0, 0.1),
+    0 -8px 0 4px #2b2b2b,
+    -4px -4px 0 2px #2b2b2b,
+    4px -4px 0 2px #2b2b2b;
+  z-index: 2;
+}
+
+.fast-about::after {
+  content: "";
+  position: absolute;
+  top: 44px;
+  left: 14px;
+  width: 36px;
+  height: 32px;
+  background: #fff;
+  border: 2px solid #333;
+  box-shadow:
+    inset 4px 0 0 #1a4a76,
+    inset -4px 0 0 #1a4a76,
+    0 16px 0 -4px #1c2331,
+    -8px 8px 0 -8px #1a4a76,
+    8px 8px 0 -8px #1a4a76;
+  z-index: 1;
+}
+
+.muay-about::before {
+  content: "";
+  position: absolute;
+  top: 12px;
+  left: 16px;
+  width: 30px;
+  height: 30px;
+  background: #ffe3e0;
+  border: 2px solid #333;
+  border-radius: 4px;
+  box-shadow:
+    inset -3px -3px 0 rgba(0, 0, 0, 0.1),
+    0 -6px 0 4px #4a2b25,
+    -6px 0 0 2px #4a2b25,
+    6px 0 0 2px #4a2b25,
+    -8px 12px 0 2px #4a2b25,
+    8px 12px 0 2px #4a2b25;
+  z-index: 2;
+}
+
+.muay-about::after {
+  content: "";
+  position: absolute;
+  top: 44px;
+  left: 15px;
+  width: 32px;
+  height: 36px;
+  background: #ffb7c5;
+  border: 2px solid #333;
+  border-radius: 16px 16px 2px 2px;
+  box-shadow:
+    inset 0 -6px 0 #ff6b9d,
+    0 8px 0 -4px #ffe3e0,
+    -6px 4px 0 -4px #ffe3e0,
+    6px 4px 0 -4px #ffe3e0;
+  z-index: 1;
+}
+
+.minigame-hub-bg,
+.gallery-bg,
+.about-bg {
+  background:
+    radial-gradient(ellipse at 18% 14%, rgba(123, 224, 173, 0.16), transparent 34%),
+    radial-gradient(ellipse at 80% 12%, rgba(255, 209, 102, 0.13), transparent 36%),
+    linear-gradient(135deg, #090716 0%, #201337 47%, #082b35 100%);
+}
+
+.minigame-grid {
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  max-width: 920px;
+}
+
+.minigame-card,
+.about-card,
+.gallery-item {
+  background:
+    linear-gradient(135deg, rgba(255, 107, 157, 0.12), rgba(123, 224, 173, 0.08)),
+    rgba(10, 5, 22, 0.58);
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.04);
+}
+
+.minigame-card {
+  min-height: 205px;
+}
+
+.minigame-icon,
+.gallery-item .g-icon {
+  filter: drop-shadow(0 0 12px rgba(255, 209, 102, 0.36));
+}
+
+#dialogue-box {
+  min-height: 168px;
+  background:
+    linear-gradient(0deg, rgba(8, 4, 18, 0.96), rgba(25, 10, 42, 0.92)),
+    linear-gradient(90deg, rgba(123, 224, 173, 0.12), rgba(255, 107, 157, 0.12));
+  border-top-color: var(--mint);
+  box-shadow: 0 -16px 40px rgba(0, 0, 0, 0.34);
+}
+
+#dialogue-speaker {
+  color: var(--gold);
+}
+
+#dialogue-text {
+  max-width: 980px;
+}
+
+.choice-btn {
+  background: rgba(123, 224, 173, 0.1);
+  border-color: var(--mint);
+}
+
+.choice-btn:hover {
+  background: rgba(255, 107, 157, 0.2);
+}
+
+#scene-name-banner {
+  white-space: nowrap;
+  background: rgba(6, 4, 18, 0.84);
+  box-shadow: 0 0 40px rgba(255, 209, 102, 0.2);
+}
+
+.game-hud-top {
+  min-height: 58px;
+}
+
+#heartcatch-canvas,
+#starlove-canvas,
+#story-canvas,
+#ending-canvas {
+  image-rendering: pixelated;
+  image-rendering: crisp-edges;
+}
+
+.puzzle-card {
+  font-family: var(--pixel-font);
+  min-width: 64px;
+}
+
+.puzzle-card:disabled {
+  cursor: default;
+}
+
+.letter-paper {
+  color: #4a1a2a;
+  border-radius: 4px;
+}
+
+.word-chip {
+  border-radius: 4px;
+}
+
+.word-chip.wrong-tap {
+  background: #c62828;
+  animation: shake 0.35s both;
+}
+
+.gallery-grid {
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  max-width: 900px;
+}
+
+.gallery-item {
+  border-radius: 4px;
+  min-height: 150px;
+}
+
+.gallery-item.locked {
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.result-box {
+  background:
+    radial-gradient(ellipse at 50% 0%, rgba(255, 209, 102, 0.16), transparent 56%),
+    linear-gradient(135deg, rgba(12, 8, 26, 0.98), rgba(23, 32, 65, 0.98));
+  border-radius: 4px;
+}
+
+.result-stars {
+  color: var(--gold);
+  text-shadow: var(--glow-gold);
+}
+
+.pixel-toast {
+  position: fixed;
+  left: 50%;
+  bottom: 24px;
+  z-index: 4000;
+  transform: translate(-50%, 12px);
+  opacity: 0;
+  padding: 10px 16px;
+  background: rgba(7, 6, 18, 0.92);
+  border: 2px solid var(--mint);
+  color: var(--white);
+  font-family: var(--thai-font);
+  font-size: 13px;
+  box-shadow: 0 0 24px rgba(123, 224, 173, 0.3);
+  transition: opacity 0.2s ease, transform 0.2s ease;
+  pointer-events: none;
+}
+
+.pixel-toast.show {
+  transform: translate(-50%, 0);
+  opacity: 1;
+}
+
+.ending-title {
+  max-width: min(92vw, 900px);
+}
+
+.ending-subtitle {
+  max-width: min(92vw, 760px);
+  text-shadow: 0 3px 0 rgba(0, 0, 0, 0.35);
+}
+
+.ending-love-score {
+  font-family: var(--pixel-font);
+  font-size: 11px;
+  color: var(--gold);
+  text-shadow: var(--glow-gold);
+}
+
+.ending-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  align-items: center;
+  justify-content: center;
+}
+
+@media (max-width: 720px) {
+  .intro-bg {
+    justify-content: flex-start;
+    padding-top: 36px;
+  }
+
+  .intro-characters {
+    gap: 42px;
+    min-height: 170px;
+    margin: 0;
+  }
+
+  .char-fast-intro,
+  .char-muay-intro {
+    transform: scale(1.55);
+  }
+
+  .game-title {
+    font-size: 20px;
+  }
+
+  .game-subtitle {
+    font-size: 8px;
+  }
+
+  .menu-buttons {
+    gap: 10px;
+    width: min(88vw, 340px);
+  }
+
+  .menu-buttons .btn-pixel {
+    width: 100%;
+    min-width: 0;
+  }
+
+  #story-hud,
+  .game-hud-top {
+    padding: 8px;
+    gap: 7px;
+    flex-wrap: wrap;
+  }
+
+  #love-bar-outer {
+    width: 132px;
+  }
+
+  #chapter-label,
+  .pixel-text-xs {
+    font-size: 6px;
+  }
+
+  #dialogue-box {
+    padding: 14px 14px 18px;
+    min-height: 190px;
+  }
+
+  #dialogue-text {
+    font-size: 14px;
+    line-height: 1.58;
+  }
+
+  #dialogue-speaker {
+    font-size: 9px;
+  }
+
+  .choice-btn {
+    font-size: 13px;
+    padding: 9px 12px;
+  }
+
+  .section-title {
+    font-size: 11px;
+    line-height: 1.5;
+  }
+
+  .minigame-grid,
+  .gallery-grid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+    padding: 6px;
+  }
+
+  .minigame-card {
+    min-height: 160px;
+    padding: 18px 14px;
+  }
+
+  #puzzle-board {
+    gap: 8px;
+    padding: 12px;
+  }
+
+  .puzzle-card {
+    min-width: 0;
+    font-size: 22px;
+  }
+
+  .letter-paper {
+    padding: 22px 16px;
+  }
+
+  #letter-text-area {
+    font-size: 14px;
+    line-height: 1.85;
+  }
+
+  .letter-blank {
+    min-width: 66px;
+  }
+
+  .about-card {
+    padding: 20px 14px;
+  }
+
+  .about-chars {
+    gap: 10px;
+  }
+
+  .about-stats {
+    flex-direction: column;
+  }
+
+  .result-box {
+    padding: 28px 18px;
+  }
+
+  .ending-chars {
+    font-size: 34px;
+  }
+
+  .ending-title {
+    font-size: 13px;
+  }
+
+  .ending-subtitle {
+    font-size: 16px;
+  }
+}
+
+@media (max-height: 640px) and (orientation: landscape) {
+  .intro-bg {
+    justify-content: center;
+    padding-top: 12px;
+  }
+
+  .intro-characters {
+    min-height: 132px;
+  }
+
+  .char-fast-intro,
+  .char-muay-intro {
+    transform: scale(1.25);
+  }
+
+  .menu-buttons {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(170px, 1fr));
+  }
+
+  #dialogue-box {
+    min-height: 132px;
+  }
+}

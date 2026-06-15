@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fast ❤️ Muay — A Pixel Love Story</title>
+  <meta name="description" content="เรื่องราวความรักระหว่าง Fast และ Muay ในโลก 2D Pixel สุดโรแมนติก">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Noto+Sans+Thai:wght@300;400;700&display=swap" rel="stylesheet">
+
+  <!-- Core Styles -->
+  <link rel="stylesheet" href="theme.css">
+  <link rel="stylesheet" href="Graphic/Graphic1.css">
+  <link rel="stylesheet" href="Graphic/Themostamazingbeauty.css">
+  <link rel="stylesheet" href="Character/Fast.css">
+  <link rel="stylesheet" href="Character/Muay.css">
+  <link rel="stylesheet" href="Gameplay/story.css">
+</head>
+<body>
+
+<!-- ==================== PARTICLE LAYER ==================== -->
+<div id="particle-layer"></div>
+<div id="star-layer"></div>
+
+<!-- ==================== SCREEN: INTRO ==================== -->
+<div id="screen-intro" class="screen active">
+  <div class="intro-bg">
+    <div class="intro-title-wrap">
+      <div class="pixel-heart-big bounce" id="intro-heart">♥</div>
+      <h1 class="game-title">Fast <span class="heart-red">❤</span> Muay</h1>
+      <p class="game-subtitle">— A Pixel Love Story —</p>
+      <div class="sakura-row">
+        <span>🌸</span><span>🌸</span><span>🌸</span><span>🌸</span><span>🌸</span>
+      </div>
+    </div>
+    <div class="intro-characters">
+      <div class="char-fast-intro pixel-sprite" id="fast-intro"></div>
+      <div class="char-muay-intro pixel-sprite" id="muay-intro"></div>
+    </div>
+    <div class="menu-buttons">
+      <button class="btn-pixel btn-primary" id="btn-start">▶ เริ่มเรื่องราว</button>
+      <button class="btn-pixel btn-secondary" id="btn-minigame">🎮 มินิเกม</button>
+      <button class="btn-pixel btn-secondary" id="btn-gallery">📖 แกลเลอรี่</button>
+      <button class="btn-pixel btn-secondary" id="btn-about">💌 เกี่ยวกับ</button>
+    </div>
+    <div class="intro-footer">
+      <span class="pixel-text-xs">Made with ❤ for Fast & Muay</span>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== SCREEN: STORY ==================== -->
+<div id="screen-story" class="screen">
+  <canvas id="story-canvas"></canvas>
+  <div id="story-ui">
+    <!-- Top HUD -->
+    <div id="story-hud">
+      <button class="btn-icon" id="btn-story-back">◀</button>
+      <div id="love-meter-wrap">
+        <span class="pixel-text-xs">Love Meter</span>
+        <div id="love-bar-outer">
+          <div id="love-bar-inner"></div>
+          <span id="love-bar-label">0%</span>
+        </div>
+      </div>
+      <div id="chapter-label" class="pixel-text-xs">Chapter 1</div>
+    </div>
+
+    <!-- Scene Name -->
+    <div id="scene-name-banner" class="hidden"></div>
+
+    <!-- Dialogue Box -->
+    <div id="dialogue-box" class="hidden">
+      <div id="dialogue-speaker"></div>
+      <div id="dialogue-text"></div>
+      <div id="dialogue-choices" class="hidden"></div>
+      <div id="dialogue-next" class="pulse-arrow">▼</div>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== SCREEN: MINIGAME HUB ==================== -->
+<div id="screen-minigame" class="screen">
+  <div class="minigame-hub-bg">
+    <button class="btn-icon btn-back-hub" id="btn-minigame-back">◀ กลับ</button>
+    <h2 class="section-title pixel-glow">🎮 มินิเกม</h2>
+    <div class="minigame-grid">
+      <div class="minigame-card" id="card-heartcatch">
+        <div class="minigame-icon">💝</div>
+        <div class="minigame-name">Heart Catch</div>
+        <div class="minigame-desc">รับหัวใจจาก Fast ให้ Muay</div>
+        <button class="btn-pixel btn-play" data-game="heartcatch">เล่น!</button>
+      </div>
+      <div class="minigame-card" id="card-lovepuzzle">
+        <div class="minigame-icon">💖</div>
+        <div class="minigame-name">Love Puzzle</div>
+        <div class="minigame-desc">จับคู่ความทรงจำของทั้งสอง</div>
+        <button class="btn-pixel btn-play" data-game="lovepuzzle">เล่น!</button>
+      </div>
+      <div class="minigame-card" id="card-starlove">
+        <div class="minigame-icon">⭐</div>
+        <div class="minigame-name">Star Promise</div>
+        <div class="minigame-desc">วาดดาวให้ครบใต้แสงจันทร์</div>
+        <button class="btn-pixel btn-play" data-game="starlove">เล่น!</button>
+      </div>
+      <div class="minigame-card" id="card-loveletter">
+        <div class="minigame-icon">💌</div>
+        <div class="minigame-name">Love Letter</div>
+        <div class="minigame-desc">เขียนจดหมายรักให้สมบูรณ์</div>
+        <button class="btn-pixel btn-play" data-game="loveletter">เล่น!</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== SCREEN: HEART CATCH GAME ==================== -->
+<div id="screen-heartcatch" class="screen">
+  <div class="game-container-full">
+    <div class="game-hud-top">
+      <button class="btn-icon" id="btn-hc-back">◀</button>
+      <span class="pixel-text">💝 Heart Catch</span>
+      <div class="score-wrap">
+        <span class="pixel-text-xs">Score:</span>
+        <span id="hc-score" class="score-num">0</span>
+      </div>
+      <div class="timer-wrap">
+        <span class="pixel-text-xs">Time:</span>
+        <span id="hc-timer" class="score-num">30</span>s
+      </div>
+    </div>
+    <canvas id="heartcatch-canvas"></canvas>
+    <div id="hc-overlay" class="game-overlay">
+      <div class="overlay-box">
+        <div class="overlay-icon">💝</div>
+        <h3 class="pixel-text" id="hc-overlay-title">Heart Catch!</h3>
+        <p id="hc-overlay-msg">ช่วย Muay รับหัวใจจาก Fast!</p>
+        <button class="btn-pixel btn-primary" id="btn-hc-start">เริ่มเลย!</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== SCREEN: LOVE PUZZLE ==================== -->
+<div id="screen-lovepuzzle" class="screen">
+  <div class="game-container-full">
+    <div class="game-hud-top">
+      <button class="btn-icon" id="btn-lp-back">◀</button>
+      <span class="pixel-text">💖 Love Puzzle</span>
+      <div class="score-wrap">
+        <span class="pixel-text-xs">คู่:</span>
+        <span id="lp-pairs" class="score-num">0/8</span>
+      </div>
+      <div class="timer-wrap">
+        <span class="pixel-text-xs">เวลา:</span>
+        <span id="lp-timer" class="score-num">60</span>s
+      </div>
+    </div>
+    <div id="puzzle-board"></div>
+    <div id="lp-overlay" class="game-overlay">
+      <div class="overlay-box">
+        <div class="overlay-icon">💖</div>
+        <h3 class="pixel-text" id="lp-overlay-title">Love Puzzle!</h3>
+        <p id="lp-overlay-msg">จับคู่ความทรงจำของ Fast & Muay!</p>
+        <button class="btn-pixel btn-primary" id="btn-lp-start">เริ่มเลย!</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== SCREEN: STAR PROMISE ==================== -->
+<div id="screen-starlove" class="screen">
+  <div class="game-container-full night-bg">
+    <div class="game-hud-top">
+      <button class="btn-icon" id="btn-sl-back">◀</button>
+      <span class="pixel-text">⭐ Star Promise</span>
+      <div class="score-wrap">
+        <span class="pixel-text-xs">ดาว:</span>
+        <span id="sl-stars" class="score-num">0/10</span>
+      </div>
+    </div>
+    <canvas id="starlove-canvas"></canvas>
+    <div id="sl-overlay" class="game-overlay">
+      <div class="overlay-box">
+        <div class="overlay-icon">🌙</div>
+        <h3 class="pixel-text">Star Promise</h3>
+        <p>วาดเส้นเชื่อมดาวให้ครบ 10 ดวง<br>ภายใต้คำสัญญาของทั้งสอง!</p>
+        <button class="btn-pixel btn-primary" id="btn-sl-start">เริ่มเลย!</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== SCREEN: LOVE LETTER ==================== -->
+<div id="screen-loveletter" class="screen">
+  <div class="game-container-full letter-bg">
+    <div class="game-hud-top">
+      <button class="btn-icon" id="btn-ll-back">◀</button>
+      <span class="pixel-text">💌 Love Letter</span>
+      <div class="score-wrap">
+        <span class="pixel-text-xs">คะแนน:</span>
+        <span id="ll-score" class="score-num">0</span>
+      </div>
+    </div>
+    <div id="letter-container">
+      <div class="letter-paper">
+        <div class="letter-header">💌 จดหมายรัก</div>
+        <div id="letter-text-area"></div>
+        <div id="letter-word-bank"></div>
+        <div id="letter-progress">
+          <div id="letter-progress-bar"></div>
+        </div>
+      </div>
+    </div>
+    <div id="ll-overlay" class="game-overlay">
+      <div class="overlay-box">
+        <div class="overlay-icon">💌</div>
+        <h3 class="pixel-text">Love Letter</h3>
+        <p>เติมคำในจดหมายรักให้ครบ<br>เพื่อบอกความในใจของ Fast!</p>
+        <button class="btn-pixel btn-primary" id="btn-ll-start">เริ่มเลย!</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== SCREEN: GALLERY ==================== -->
+<div id="screen-gallery" class="screen">
+  <div class="gallery-bg">
+    <button class="btn-icon btn-back-hub" id="btn-gallery-back">◀ กลับ</button>
+    <h2 class="section-title pixel-glow">📖 แกลเลอรี่ความทรงจำ</h2>
+    <div id="gallery-grid" class="gallery-grid"></div>
+  </div>
+</div>
+
+<!-- ==================== SCREEN: ABOUT ==================== -->
+<div id="screen-about" class="screen">
+  <div class="about-bg">
+    <button class="btn-icon btn-back-hub" id="btn-about-back">◀ กลับ</button>
+    <div class="about-content">
+      <div class="about-heart-anim">💕</div>
+      <h2 class="section-title pixel-glow">Fast ❤️ Muay</h2>
+      <div class="about-card">
+        <p class="about-quote">"ในทุกพิกเซลของโลกนี้<br>มีเพียงเธอที่ทำให้มันสมบูรณ์"</p>
+        <div class="about-chars">
+          <div class="about-char">
+            <div class="about-char-sprite fast-about"></div>
+            <div class="about-char-name">Fast</div>
+            <div class="about-char-desc">หัวใจที่รอคอย<br>ความรักอันแท้จริง</div>
+          </div>
+          <div class="about-char-divider">❤️</div>
+          <div class="about-char">
+            <div class="about-char-sprite muay-about"></div>
+            <div class="about-char-name">Muay</div>
+            <div class="about-char-desc">ดอกไม้งามที่<br>ทำให้โลกสวยขึ้น</div>
+          </div>
+        </div>
+        <p class="about-text">เกมนี้สร้างขึ้นด้วยความรักและความตั้งใจอย่างเต็มที่<br>เพื่อเฉลิมฉลองความรักของ Fast และ Muay 🌸</p>
+        <div class="about-stats">
+          <div class="stat-item">
+            <div class="stat-icon">💝</div>
+            <div class="stat-label">ความรัก</div>
+            <div class="stat-val">∞</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-icon">⭐</div>
+            <div class="stat-label">ความสุข</div>
+            <div class="stat-val">MAX</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-icon">🌸</div>
+            <div class="stat-label">ความสวย</div>
+            <div class="stat-val">100%</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== ENDING SCREEN ==================== -->
+<div id="screen-ending" class="screen">
+  <div class="ending-bg">
+    <canvas id="ending-canvas"></canvas>
+    <div class="ending-content" id="ending-content"></div>
+  </div>
+</div>
+
+<!-- ==================== RESULT OVERLAY ==================== -->
+<div id="result-overlay" class="result-overlay hidden">
+  <div class="result-box">
+    <div class="result-icon" id="result-icon">🎉</div>
+    <h3 class="result-title" id="result-title">ยอดเยี่ยม!</h3>
+    <p class="result-msg" id="result-msg"></p>
+    <div class="result-stars" id="result-stars"></div>
+    <div class="result-buttons">
+      <button class="btn-pixel btn-primary" id="btn-result-retry">เล่นอีกครั้ง</button>
+      <button class="btn-pixel btn-secondary" id="btn-result-hub">กลับหน้าหลัก</button>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== SCRIPTS ==================== -->
+<script src="enginepro/engine.js"></script>
+<script src="Graphic/fps.js"></script>
+<script src="Gameplay/storyengine.js"></script>
+<script src="app.js"></script>
+</body>
+</html>

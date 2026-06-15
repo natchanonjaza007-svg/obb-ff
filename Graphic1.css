@@ -1,0 +1,175 @@
+/* ================================================================
+   Graphic1.css — Scene Backgrounds & World Art
+   ================================================================ */
+
+/* ─── Intro Screen ─── */
+#screen-intro { background: none; }
+
+.intro-bg {
+  width: 100%; height: 100%;
+  background:
+    radial-gradient(ellipse at 50% 0%, rgba(255,107,157,0.3) 0%, transparent 60%),
+    radial-gradient(ellipse at 0% 100%, rgba(156,39,176,0.4) 0%, transparent 50%),
+    radial-gradient(ellipse at 100% 100%, rgba(255,51,102,0.3) 0%, transparent 50%),
+    linear-gradient(180deg, #0d0020 0%, #1a0035 30%, #0a0020 70%, #050015 100%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+  gap: 0;
+}
+
+/* Pixel grid overlay */
+.intro-bg::before {
+  content: '';
+  position: absolute; inset: 0;
+  background-image:
+    linear-gradient(rgba(255,107,157,0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,107,157,0.05) 1px, transparent 1px);
+  background-size: 32px 32px;
+  pointer-events: none;
+}
+
+/* Ground line */
+.intro-bg::after {
+  content: '';
+  position: absolute;
+  bottom: 140px; left: 0; right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, transparent, var(--pink), var(--purple), var(--pink), transparent);
+}
+
+/* ─── Title Area ─── */
+.intro-title-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  z-index: 10;
+  margin-bottom: 10px;
+}
+
+.pixel-heart-big {
+  font-size: 40px;
+  color: var(--red-heart);
+  text-shadow: 0 0 20px var(--red-heart), 0 0 40px rgba(255,23,68,0.5);
+}
+
+.game-title {
+  font-family: var(--pixel-font);
+  font-size: clamp(18px, 4vw, 32px);
+  color: var(--white);
+  text-shadow:
+    3px 3px 0 var(--pink-dark),
+    0 0 20px var(--pink),
+    0 0 40px var(--purple);
+  letter-spacing: 4px;
+  animation: glow-pulse 3s ease-in-out infinite;
+  text-align: center;
+}
+
+.game-subtitle {
+  font-family: var(--pixel-font);
+  font-size: 9px;
+  color: var(--lavender);
+  letter-spacing: 6px;
+  opacity: 0.8;
+}
+
+.sakura-row {
+  display: flex; gap: 12px;
+  font-size: 18px;
+  animation: float 3s ease-in-out infinite;
+}
+
+/* ─── Intro Character Sprites ─── */
+.intro-characters {
+  display: flex;
+  gap: 80px;
+  align-items: flex-end;
+  z-index: 10;
+  margin: 10px 0;
+}
+
+.char-fast-intro,
+.char-muay-intro {
+  width: 80px;
+  height: 120px;
+  image-rendering: pixelated;
+  position: relative;
+}
+
+/* ─── Menu Buttons ─── */
+.menu-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  align-items: center;
+  z-index: 10;
+  margin-top: 10px;
+  animation: slideUp 0.6s ease;
+}
+
+.menu-buttons .btn-pixel {
+  min-width: 220px;
+}
+
+/* ─── Intro Footer ─── */
+.intro-footer {
+  position: absolute;
+  bottom: 12px;
+  z-index: 10;
+  opacity: 0.6;
+}
+
+/* ─── Scene Backgrounds ─── */
+.scene-bg-town {
+  background:
+    linear-gradient(180deg,
+      #87ceeb 0%, #b0e0f0 30%,
+      #98d4a3 60%, #7ab87c 70%,
+      #5a9e5c 80%, #3a7e3c 100%
+    );
+}
+
+.scene-bg-night {
+  background:
+    radial-gradient(ellipse at 30% 15%, rgba(200,180,255,0.3) 0%, transparent 40%),
+    linear-gradient(180deg, #030015 0%, #0a0035 40%, #0d0a3a 70%, #0a0820 100%);
+}
+
+.scene-bg-cafe {
+  background: linear-gradient(180deg, #3d1c0a 0%, #5c2d13 30%, #7a3d1e 60%, #c4905a 100%);
+}
+
+.scene-bg-park {
+  background: linear-gradient(180deg, #87ceeb 0%, #a8e0a0 40%, #6aaa6c 70%, #4a8a4c 100%);
+}
+
+.scene-bg-sunset {
+  background: linear-gradient(180deg, #ff6b35 0%, #f7931e 20%, #ffcd3c 40%, #ff6b9d 60%, #c2185b 80%, #6a1b9a 100%);
+}
+
+.scene-bg-rooftop {
+  background:
+    radial-gradient(ellipse at 50% -20%, rgba(255,200,100,0.4) 0%, transparent 60%),
+    linear-gradient(180deg, #1a0a35 0%, #2a1045 40%, #3a1a5a 80%, #1a0a2a 100%);
+}
+
+/* ─── Pixel Art Buildings (CSS) ─── */
+.pixel-building {
+  position: absolute;
+  bottom: 0;
+  background: var(--building-color, #2a2a4a);
+  image-rendering: pixelated;
+}
+
+/* Stars in night scenes */
+.canvas-star {
+  position: absolute;
+  border-radius: 50%;
+  background: white;
+  animation: star-twinkle ease-in-out infinite;
+}
